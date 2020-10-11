@@ -1,0 +1,41 @@
+{
+  "name": "@eyzi/acmer",
+  "version": "0.0.1",
+  "description": "ACME + MongoDB manager",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "node test/main.js"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eyzi/acmer.git"
+  },
+  "keywords": [
+    "acme",
+    "letsencrypt",
+    "mongodb",
+    "dns01-challenge"
+  ],
+  "author": "Eyzi <contact@eyzi.xyz> (eyzi.ch)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eyzi/acmer/issues"
+  },
+  "homepage": "https://github.com/eyzi/acmer#readme",
+  "dependencies": {
+    "@fidm/x509": "^1.2.1",
+    "@root/csr": "^0.8.1",
+    "@root/keypairs": "^0.10.1",
+    "@root/pem": "^1.0.4",
+    "acme": "^3.0.3",
+    "acme-dns-01-test": "^3.3.2",
+    "mongoose": "^5.10.9",
+    "punycode": "^2.1.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
