@@ -155,15 +155,19 @@ class Acmer extends EventEmitter {
 		this.emit("info", `=== ACMER CHECK === End @ ${ new Date() }`)
 	}
 
+	catcher(message) {
+		this.emit("error", message)
+	}
+
 	async checkCert() {
 		if (!existsSync(this.privkeyFile)) {
 			this.emit("info", `Privkey file not found`)
-			return await this.initAcme()
+			return await this.initAcme().catch(this.catcher)
 		}
 
 		if (!existsSync(this.fullchainFile)) {
 			this.emit("info", `Fullchain file not found`)
-			return await this.initAcme()
+			return await this.initAcme().catch(this.catcher)
 		}
 
 		// if PEMs are invalid, run initAcme
@@ -175,7 +179,7 @@ class Acmer extends EventEmitter {
 		if (renewPoint > notAfter) {
 			this.emit("info", `Due for renewal`)
 			this.deletePem()
-			return await this.initAcme()
+			return await this.initAcme().catch(this.catcher)
 		}
 
 		this.emit("info", `Current certificates seem to be good`)
@@ -273,7 +277,9 @@ class Acmer extends EventEmitter {
 		})
 		acc = new Account({
 			name: this.name,
-			key: keypair.private
+			key: keypair.private,
+			domains: this.domains,
+			email: this.email
 		})
 
 		this.emit("info", `Saving key to database`)
