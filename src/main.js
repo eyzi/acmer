@@ -243,6 +243,7 @@ class Acmer extends EventEmitter {
 		this.emit("info", "Saving certificate");
 		writeFileSync(this.privkeyFile, serverPem, "ascii");
 		writeFileSync(this.fullchainFile, `${ pems.cert }\n${ pems.chain }\n`, "ascii");
+		this.emit("update");
 	}
 
 	async createAcmeInstance() {
