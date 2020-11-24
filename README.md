@@ -64,5 +64,8 @@ Test a domain with `acme-dns-01-test`. Returns a promise that resolves to `PASS`
 ### info
 - message `{String}`
 
+### update
+Emitted when the certificate has been updated
+
 ### error
 - message `{String}`
