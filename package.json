@@ -1,6 +1,6 @@
 {
   "name": "@eyzi/acmer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ACME + MongoDB manager",
   "main": "src/main.js",
   "scripts": {
